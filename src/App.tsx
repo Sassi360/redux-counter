@@ -1,6 +1,5 @@
 import { useState } from "react";
-import "./App.css";
-import InputCounter from "./feature/InputCounter/InputCounter";
+import InputCounter from "./components/core/Input/Input";
 
 function App() {
   const [counter, setCounter] = useState(0);
@@ -8,12 +7,13 @@ function App() {
   const increment = () => {
     setCounter((prevCounter) => prevCounter + 1);
   };
+
   const decrement = () => {
     setCounter((prevCounter) => prevCounter - 1);
   };
 
   const reset = () => {
-    setCounter((prevCounter) => (prevCounter = 0));
+    setCounter(0);
   };
 
   return (
