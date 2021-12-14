@@ -1,3 +1,4 @@
+import { FaMinus, FaPlus } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "./components/core/Button/Button";
 import {
@@ -7,8 +8,6 @@ import {
   reset,
   selectCount,
 } from "./state/counter-slice";
-import { FaPlus, FaMinus } from "react-icons/fa";
-import Input from "./components/core/Input/Input";
 
 function App() {
   const dispatch = useDispatch();
