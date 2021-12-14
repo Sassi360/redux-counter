@@ -1,0 +1,7 @@
+.root {
+  @apply block px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm;
+}
+
+.root:focus {
+  @apply outline-none;
+}

@@ -1,14 +1,29 @@
-import { forwardRef } from "react";
+import cn from "classnames";
+import s from "./Input.module.css";
+import { FC, InputHTMLAttributes } from "react";
 
-type InputProps = Record<string, unknown>;
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  className?: string;
+  onChange?: (...args: any[]) => any;
+}
 
-const Input = forwardRef<HTMLInputElement, InputProps>(({ ...props }) => {
+const Input: FC<InputProps> = (props) => {
+  const { className, children, onChange, ...rest } = props;
+
+  const rootClassName = cn(s.root, {}, className);
+
   return (
-    <input
-      className="block px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm"
-      {...props}
-    />
+    <label>
+      <input
+        className={rootClassName}
+        autoComplete="off"
+        autoCorrect="off"
+        autoCapitalize="off"
+        spellCheck="false"
+        {...rest}
+      />
+    </label>
   );
-});
+};
 
 export default Input;

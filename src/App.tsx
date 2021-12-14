@@ -1,44 +1,53 @@
-import { useState } from "react";
-import InputCounter from "./components/core/Input/Input";
+import { useDispatch, useSelector } from "react-redux";
+import Button from "./components/core/Button/Button";
+import {
+  decrement,
+  increment,
+  incrementByAmount,
+  reset,
+  selectCount,
+} from "./state/counter-slice";
 
 function App() {
-  const [counter, setCounter] = useState(0);
+  const dispatch = useDispatch();
+  const count = useSelector(selectCount);
 
-  const increment = () => {
-    setCounter((prevCounter) => prevCounter + 1);
-  };
-
-  const decrement = () => {
-    setCounter((prevCounter) => prevCounter - 1);
-  };
-
-  const reset = () => {
-    setCounter(0);
+  const handleOnChange = (e: any) => {
+    dispatch(incrementByAmount(Number(e.target.value)));
   };
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <h1 className="my-6 text-4xl font-bold">Redux counter</h1>
-      <InputCounter
+      <input
         placeholder="Start Counting"
         type="number"
-        value={counter}
+        value={count}
+        onChange={handleOnChange}
       />
       <div className="my-4 space-x-4">
-        <button className="px-3 py-1 border-2 rounded-lg" onClick={increment}>
-          Increment
-        </button>
-
-        <button className="px-3 py-1 border-2 rounded-lg" onClick={decrement}>
+        <Button
+          className="px-3 py-1 border-2 rounded-lg"
+          onClick={() => dispatch(decrement())}
+          variant="secondary"
+        >
           Decrement
-        </button>
+        </Button>
+        <Button
+          className="px-3 py-1 border-2 rounded-lg"
+          onClick={() => dispatch(increment())}
+          variant="secondary"
+        >
+          Increment
+        </Button>
       </div>
-      <button
-        onClick={reset}
+      <Button
+        onClick={() => dispatch(reset())}
         className="px-3 py-1 text-white bg-red-600 border-2 rounded-lg focus:ring-2 focus:ring-red-600"
+        variant="primary"
       >
         Reset
-      </button>
+      </Button>
     </div>
   );
 }
