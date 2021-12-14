@@ -7,6 +7,8 @@ import {
   reset,
   selectCount,
 } from "./state/counter-slice";
+import { FaPlus, FaMinus } from "react-icons/fa";
+import Input from "./components/core/Input/Input";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,27 +26,29 @@ function App() {
         type="number"
         value={count}
         onChange={handleOnChange}
+        className="block px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm"
       />
       <div className="my-4 space-x-4">
         <Button
-          className="px-3 py-1 border-2 rounded-lg"
+          className="px-5 py-2 border-2 rounded-lg"
           onClick={() => dispatch(decrement())}
           variant="secondary"
         >
-          Decrement
+          <FaMinus />
         </Button>
         <Button
-          className="px-3 py-1 border-2 rounded-lg"
+          className="px-5 py-2 border-2 rounded-lg"
           onClick={() => dispatch(increment())}
           variant="secondary"
         >
-          Increment
+          <FaPlus />
         </Button>
       </div>
       <Button
         onClick={() => dispatch(reset())}
-        className="px-3 py-1 text-white bg-red-600 border-2 rounded-lg focus:ring-2 focus:ring-red-600"
+        className="px-4 py-1 text-white bg-red-500 border-2 rounded-lg focus:ring-2 focus:ring-red-500"
         variant="primary"
+        type="reset"
       >
         Reset
       </Button>

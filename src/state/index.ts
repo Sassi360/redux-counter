@@ -11,9 +11,6 @@ export type RootState = ReturnType<typeof combinedReducers>;
 export const clear = createAction("root/clear");
 
 export const rootReducer: Reducer<RootState> = (state, action) => {
-  if (clear.match(action)) {
-    state = {} as RootState;
-  }
   return combinedReducers(state, action);
 };
 

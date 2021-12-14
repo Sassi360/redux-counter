@@ -16,8 +16,6 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   type?: "submit" | "reset" | "button";
   Component?: string | JSXElementConstructor<any>;
   width?: string | number;
-  loading?: boolean;
-  disabled?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = forwardRef((props, buttonRef) => {
